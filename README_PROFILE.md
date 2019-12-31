@@ -17,7 +17,24 @@ git checkout -b local v4.9
 cd linux-stable
 patch -p1 < ../profile.patch
 ```
-5. Call to profile
+
+5. install linux kernel
+```
+sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev bc
+```
+make menuconfig
+```
+make -j48
+```
+sudo make modules_install
+```
+sudo make install
+```
+sudo update-initramfs -c -k 4.9
+```
+sudo update-grub
+```
+6. Call to profile
 ```
 syscall(332,NULL,0,0)
 ```
